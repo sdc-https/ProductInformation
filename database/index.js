@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const seed = require('./seed.js');
 
 mongoose.connect('mongodb://localhost/Information', {useNewUrlParser: true, useUnifiedTopology: true});
 

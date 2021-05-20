@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -20,6 +19,7 @@ class ProductInfo extends React.Component {
         <span>Run Time: {this.props.product.runTime}</span><br></br>
         <span>Studio: {this.props.product.studio}</span><br></br>
         <span>Number of discs: {this.props.product.numberOfDisks}</span><br></br>
+        <span>{this.props.avgReviews} out of 5 stars. {this.props.totalReviews} ratings</span><br></br>
         <span>Actors: {this.props.cast.map((member, index) => {
           if (index < this.props.cast.length - 2) {
             return member + ', ';
