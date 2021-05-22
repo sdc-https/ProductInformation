@@ -6,7 +6,7 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let productId = new URL(window.location).pathname.slice(1);
+    let productId = new URL(window.location).pathname.slice(4);
     this.state = {
       productId,
       product: {},
@@ -30,7 +30,7 @@ class App extends React.Component {
         console.log('ERROR IN AXIOS GET REQUEST', error);
       });
 
-    axios.get('http://localhost:9001/averagereview/' + this.state.productId)
+    axios.get('http://localhost:3004/averagereview/' + this.state.productId)
       .then((response) =>
         that.setState({
           avgReviews: response.data.averageReviews,
