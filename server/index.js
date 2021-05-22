@@ -3,8 +3,6 @@ const app = express();
 const port = 3001;
 const path = require('path');
 const db = require('../database/index.js');
-// const bodyParser = require('body-parser');
-
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -14,10 +12,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
-
+app.get('*/dp/:productid', (req, res) => {
+  console.log('GETTING TO DP CALL');
+  res.sendFile(path.join(__dirname, '/../public/index.html'));
+});
 
 //Specific Product Id Fetcher
 app.get('/:productId', function (req, res) {
@@ -34,16 +33,6 @@ app.get('/:productId', function (req, res) {
   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
 
-//Random DVD Fetcher
-// app.get('/Information/', function (req, res) {
-//   let id = Math.floor(Math.random() * 100);
-//   console.log('Getting a random DVD');
-//   return db.returnData(id)
-//     .then((dvd) => {
-//       console.log('SERVER DVD', dvd);
-//       res.send(dvd);
-//     });
-// });
 
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
@@ -68,6 +57,7 @@ app.get('/Information/:productId', function (req, res) {
       });
   }
 });
+
 
 
 app.listen(port, () => {
