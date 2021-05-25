@@ -8,10 +8,10 @@ class ProductInfo extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div className = "Information">
         <h2>Product Information:</h2>
         <span>Rating: {this.props.product.rating}</span><br></br>
-        <span>Director: {this.props.cast[this.props.cast.length - 1]}</span><br></br>
+        <span id = "director">Director: {this.props.cast[this.props.cast.length - 1]}</span><br></br>
         <span>Product Dimensions: {this.props.product.dimensions}</span><br></br>
         <span>Aspect Ratio: {this.props.product.aspectRatio}</span><br></br>
         <span>Media Format: {this.props.product.format}</span><br></br>
