@@ -12,14 +12,20 @@
     "start": "webpack serve",
     "watch": "webpack --watch",
     "serve": "nodemon server/index.js",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.0",
     "@babel/preset-react": "^7.13.13",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^26.6.3",
+    "puppeteer": "^9.1.1",
+    "regenerator-runtime": "^0.13.7",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"

@@ -12,9 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
-app.get('*/dp/:productid', (req, res) => {
-  console.log('GETTING TO DP CALL');
+app.get('*/dp/:productId', (req, res) => {
   res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
 
