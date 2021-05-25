@@ -1,2 +1,3 @@
 package.json
 bundle.js
+spec/test.js
