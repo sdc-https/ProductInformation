@@ -9,24 +9,28 @@ class ProductInfo extends React.Component {
     console.log(this.props);
     return (
       <div className = "Information">
+        <hr></hr>
         <h2>Product Information:</h2>
-        <span>Rating: {this.props.product.rating}</span><br></br>
-        <span id = "director">Director: {this.props.cast[this.props.cast.length - 1]}</span><br></br>
-        <span>Product Dimensions: {this.props.product.dimensions}</span><br></br>
-        <span>Aspect Ratio: {this.props.product.aspectRatio}</span><br></br>
-        <span>Media Format: {this.props.product.format}</span><br></br>
-        <span>Release Date: {this.props.product.releaseDate}</span><br></br>
-        <span>Run Time: {this.props.product.runTime}</span><br></br>
-        <span>Studio: {this.props.product.studio}</span><br></br>
-        <span>Number of discs: {this.props.product.numberOfDisks}</span><br></br>
-        <span>{this.props.avgReviews} out of 5 stars. {this.props.totalReviews} ratings</span><br></br>
-        <span>Actors: {this.props.cast.map((member, index) => {
+        <ul>
+          <li><span className = "bold">Rating:</span><span> {this.props.product.rating}</span></li><br></br>
+          <li><span className = "bold" id ="director">Director: </span><span>{this.props.cast[this.props.cast.length - 1]}</span></li><br></br>
+          <li><span className = "bold">Product Dimensions: </span><span>{this.props.product.dimensions}</span></li><br></br>
+          <li><span className = "bold">Aspect Ratio: </span><span>{this.props.product.aspectRatio}</span></li><br></br>
+          <li><span className = "bold">Media Format: </span><span>{this.props.product.format}</span></li><br></br>
+          <li><span className = "bold">Release Date: </span><span>{this.props.product.releaseDate}</span></li><br></br>
+          <li><span className = "bold">Run Time: </span><span>{this.props.product.runTime}</span></li><br></br>
+          <li><span className = "bold">Studio: </span><span>{this.props.product.studio}</span></li><br></br>
+          <li><span className = "bold">Number of discs: </span><span>{this.props.product.numberOfDisks}</span></li><br></br>
+          <li><span>{this.props.avgReviews} out of 5 stars. {this.props.totalReviews} ratings</span></li><br></br>
+          <li><span className = "bold">Actors: </span><span>{this.props.cast.map((member, index) => {
           if (index < this.props.cast.length - 2) {
             return member + ', ';
           } else if (index < this.props.cast.length - 1) {
             return member + ' ';
           }
-        })}</span>
+        })}</span></li>
+        </ul>
+        <hr></hr>
       </div>
     );
   }
