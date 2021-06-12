@@ -1,13 +1,13 @@
 # Project Name
 
-> Project description
+> Amazon DVD Item Page
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Zheng-Yi-Sao/ProductInformation
+  - https://github.com/Zheng-Yi-Sao/ProductOverview
+  - https://github.com/Zheng-Yi-Sao/CustomerReviews
+  - https://github.com/Zheng-Yi-Sao/ProductGallery
 
 ## Table of Contents
 

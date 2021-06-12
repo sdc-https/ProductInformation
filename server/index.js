@@ -3,12 +3,23 @@ const app = express();
 const port = 3001;
 const path = require('path');
 const db = require('../database/index.js');
+const cors = require('cors');
+const shrinkRay = require('shrink-ray-current');
+
+
+app.options('*', cors());
+app.get('*', cors());
+app.use(cors());
+app.use(shrinkRay());
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Cache-Control', 'public, max-age=31536000');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   next();
 });
 
@@ -34,7 +45,8 @@ app.get('/:productId', function (req, res) {
 
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
-  console.log('Specific DVD Request:', req.params.productId);
+  console.log('API CALL Specific DVD Request:', req.params.productId);
+
   if (req.params.productId) {
     return db.returnData(req.params.productId)
       .then((currentDVD) => {

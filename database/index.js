@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-const seed = require('./seed.js');
 
-mongoose.connect('mongodb://localhost/Information', {useNewUrlParser: true, useUnifiedTopology: true});
-
+mongoose.connect('mongodb://mongo:27017/Information', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Error Connecting Database'));
@@ -28,22 +26,6 @@ const fakeSchema = new mongoose.Schema({
 
 
 let Information = mongoose.model('Information', fakeSchema);
-
-
-const save = (newSeed) => {
-  newSeed.map((record) => {
-    let newRecord = new Information(record);
-    newRecord.save(function(err, response) {
-      if (err) {
-        console.log('Error Saving Database: ', err);
-      } else {
-        console.log('Saved to Database', response);
-      }
-    });
-  });
-};
-
-//save(seed.newSeed);
 
 let returnData = (id) => {
   return Information.findOne({productId: id}).exec();
