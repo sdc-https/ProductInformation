@@ -78,7 +78,7 @@
 	border-bottom-right-radius: 0px;
 }
 
-h2 {
+.Information h2 {
   color: #C60!important;
   font-size: 16px!important;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -96,7 +96,7 @@ h2 {
 }
 
 
-ul {
+.Information ul {
   /* Font & Text */
 	font-family: "Amazon Ember", Arial, sans-serif;
 	font-size: 14px;
@@ -178,7 +178,7 @@ ul {
 	border-bottom-right-radius: 0px;
 }
 
-li {
+.Information li {
   list-style: none;
   margin-bottom: 5.5px;
   box-sizing: border-box;
@@ -188,6 +188,10 @@ li {
   text-align: -webkit-match-parent;
 }
 
-.bold {
+.Information .bold {
   font-weight: 700!important;
+}
+
+.Information #rating {
+  color: #007185
 }

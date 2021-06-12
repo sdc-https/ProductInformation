@@ -17,18 +17,17 @@ class ProductInfo extends React.Component {
           <li><span className = "bold">Product Dimensions: </span><span>{this.props.product.dimensions}</span></li><br></br>
           <li><span className = "bold">Aspect Ratio: </span><span>{this.props.product.aspectRatio}</span></li><br></br>
           <li><span className = "bold">Media Format: </span><span>{this.props.product.format}</span></li><br></br>
-          <li><span className = "bold">Release Date: </span><span>{this.props.product.releaseDate}</span></li><br></br>
           <li><span className = "bold">Run Time: </span><span>{this.props.product.runTime}</span></li><br></br>
           <li><span className = "bold">Studio: </span><span>{this.props.product.studio}</span></li><br></br>
           <li><span className = "bold">Number of discs: </span><span>{this.props.product.numberOfDisks}</span></li><br></br>
-          <li><span>{this.props.avgReviews} out of 5 stars. {this.props.totalReviews} ratings</span></li><br></br>
+          <li><span className = "bold">Customer Reviews: </span><span><br></br><br></br>{this.props.avgReviews} out of 5 stars.&nbsp;&nbsp;</span><span id = "rating">{this.props.totalReviews} ratings</span></li><br></br>
           <li><span className = "bold">Actors: </span><span>{this.props.cast.map((member, index) => {
           if (index < this.props.cast.length - 2) {
             return member + ', ';
           } else if (index < this.props.cast.length - 1) {
             return member + ' ';
           }
-        })}</span></li>
+        })}</span></li><br></br>
         </ul>
         <hr></hr>
       </div>

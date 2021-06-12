@@ -1,4 +1,4 @@
-const Information = require('./index.js');
+const { Information } = require ('./index.js');
 const faker = require('faker');
 
 let seedData = () => {
@@ -28,6 +28,22 @@ let seedData = () => {
   return information;
 };
 
-const newSeed = seedData();
+// const data = seedData();
+console.log(data);
 
-module.exports.newSeed = newSeed;
+const save = (data) => {
+  data.map((record) => {
+    let newRecord = new Information(record);
+    newRecord.save(function(err, response) {
+      if (err) {
+        console.log('Error Saving Database: ', err);
+      } else {
+        console.log('Saved to Database', response);
+      }
+    });
+  });
+};
+
+// save(data);
+
+
