@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongo:27017/Information', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/Information', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Error Connecting Database'));
@@ -25,12 +26,25 @@ const fakeSchema = new mongoose.Schema({
 });
 
 
-let Information = mongoose.model('Information', fakeSchema);
+const Information = mongoose.model('Information', fakeSchema);
 
-let returnData = (id) => {
+const returnData = (id) => {
   return Information.findOne({productId: id}).exec();
 };
 
+const countEntries = () => {
+  return Information.countDocuments().exec();
+};
 
-module.exports.returnData = returnData;
-module.exports.Information = Information;
+const saveEntry = (record) => {
+  let newRecord = new Information(record);
+  return newRecord.save();
+};
+
+
+module.exports = {
+  returnData,
+  countEntries,
+  saveEntry,
+  Information
+};

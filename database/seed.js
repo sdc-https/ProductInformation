@@ -6,7 +6,7 @@ let seedData = () => {
   console.log('Calling on seedData function');
   let ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
   let formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 1000; i++) {
     let castList = [];
     for (let j = 1; j <= 4; j++) {
       castList.push(faker.name.findName());
@@ -28,7 +28,7 @@ let seedData = () => {
   return information;
 };
 
-// const data = seedData();
+const data = seedData();
 console.log(data);
 
 const save = (data) => {
@@ -44,6 +44,6 @@ const save = (data) => {
   });
 };
 
-// save(data);
+save(data);
 
 
