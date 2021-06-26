@@ -41,11 +41,11 @@ app.post('/', (req, res) => {
       db.saveEntry(record)
         .then((result) => {
           console.log('New entry added:', result);
-          res.status(201).json(result);
+          res.status(201);
         })
         .catch((error) => {
           console.log('Error saving new entry:', error);
-        })
+        });
     })
 });
 
@@ -91,8 +91,15 @@ app.get('/Information/:productId', function (req, res) {
 });
 
 // UPDATE
-app.put('/', (req, res) => {
-
+app.put('/:productId', (req, res) => {
+  db.updateEntry(req.params.productId, req.body)
+    .then((result) => {
+      console.log('Record updated:', result);
+      res.status(201);
+    })
+    .catch((error) => {
+      console.log('Error updating record:', error);
+    });
 });
 
 // DELETE

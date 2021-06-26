@@ -41,10 +41,20 @@ const saveEntry = (record) => {
   return newRecord.save();
 };
 
+const updateEntry = (id, update) => {
+  return Information.findOneAndUpdate({
+    productId: id
+  }, update, {
+    new: true,
+    upsert: true,
+    overwrite: false
+  }).exec();
+};
 
 module.exports = {
+  Information,
   returnData,
   countEntries,
   saveEntry,
-  Information
+  updateEntry
 };
