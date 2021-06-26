@@ -25,7 +25,6 @@ const fakeSchema = new mongoose.Schema({
   numberOfDisks: Number,
 });
 
-
 const Information = mongoose.model('Information', fakeSchema);
 
 const returnData = (id) => {
@@ -47,7 +46,8 @@ const updateEntry = (id, update) => {
   }, update, {
     new: true,
     upsert: true,
-    overwrite: false
+    overwrite: false,
+    useFindAndModify: false
   }).exec();
 };
 
