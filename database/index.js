@@ -36,7 +36,7 @@ const countEntries = () => {
   return Information.countDocuments().exec();
 };
 
-const saveEntry = (record) => {
+const createEntry = (record) => {
   let newRecord = new Information(record);
   return newRecord.save();
 };
@@ -51,10 +51,15 @@ const updateEntry = (id, update) => {
   }).exec();
 };
 
+const deleteEntry = (id) => {
+  return Information.deleteOne({ productId: id}).exec();
+}
+
 module.exports = {
   Information,
   returnData,
   countEntries,
-  saveEntry,
-  updateEntry
+  createEntry,
+  updateEntry,
+  deleteEntry
 };

@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
       productId = (entries + 1).toString();
       let record = req.body;
       record.productId = productId;
-      db.saveEntry(record)
+      db.createEntry(record)
         .then((result) => {
           console.log('New entry added:', result);
           res.status(201);
@@ -103,8 +103,16 @@ app.put('/:productId', (req, res) => {
 });
 
 // DELETE
-app.delete('/', (req, res) => {
-
+app.delete('/:productId', (req, res) => {
+  let productId = req.params.productId;
+  db.deleteEntry(productId)
+    .then((result) => {
+      console.log(`Record deleted: ${productId}, result: ${result}`);
+      res.status(200);
+    })
+    .catch((error) => {
+      console.log('Error deleting record:', error);
+    });
 });
 
 
