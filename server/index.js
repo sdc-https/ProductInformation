@@ -31,7 +31,7 @@ app.get('*/dp/:productId', (req, res) => {
 });
 
 // CREATE
-app.post('/', (req, res) => {
+app.post('/Information', (req, res) => {
   let productId;
   db.countEntries()
     .then((entries) => {
@@ -89,7 +89,7 @@ app.get('/Information/:productId', function (req, res) {
 });
 
 // UPDATE
-app.put('/:productId', (req, res) => {
+app.put('/Information/:productId', (req, res) => {
   db.updateEntry(req.params.productId, req.body)
     .then((result) => {
       // console.log('Record updated:', result);
@@ -101,7 +101,7 @@ app.put('/:productId', (req, res) => {
 });
 
 // DELETE
-app.delete('/:productId', (req, res) => {
+app.delete('/Information/:productId', (req, res) => {
   let productId = req.params.productId;
   db.deleteEntry(productId)
     .then((result) => {

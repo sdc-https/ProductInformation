@@ -5,7 +5,7 @@ import regeneratorRuntime from 'regenerator-runtime';
 // Create
 describe('POST route', () => {
   it('creates a new record', async () => {
-    await axios.post('http://localhost:3001/', sampleDataForOneProduct)
+    await axios.post('http://localhost:3001/Information', sampleDataForOneProduct)
       .then((res) => {
         expect(res.status).toBe(201);
       })
@@ -31,7 +31,7 @@ describe('GET route', () => {
 // Update
 describe('PUT route', () => {
   it('updates a record', async () => {
-    await axios.put('http://localhost:3001/101', {format: 'Home Theater'})
+    await axios.put('http://localhost:3001/Information/101', {format: 'Home Theater'})
       .then((res) => {
         expect(res.status).toBe(201);
       })
@@ -44,7 +44,7 @@ describe('PUT route', () => {
 // Delete
 describe('DELETE route', () => {
   it ('deletes a record', async () => {
-    await axios.delete('http://localhost:3001/101')
+    await axios.delete('http://localhost:3001/Information/101')
       .then((res) => {
         expect(res.status).toBe(200);
       })
