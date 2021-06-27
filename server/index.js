@@ -41,7 +41,7 @@ app.post('/Information', (req, res) => {
       db.createEntry(record)
         .then((result) => {
           // console.log('New entry added:', result);
-          res.status(201).end();
+          res.status(201).json(result);
         })
         .catch((error) => {
           console.log('Error saving new entry:', error);
