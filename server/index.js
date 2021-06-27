@@ -31,7 +31,7 @@ app.get('*/dp/:productId', (req, res) => {
 });
 
 // CREATE
-app.post('/', (req, res) => {
+app.post('/Information', (req, res) => {
   let productId;
   db.countEntries()
     .then((entries) => {
@@ -40,8 +40,8 @@ app.post('/', (req, res) => {
       record.productId = productId;
       db.createEntry(record)
         .then((result) => {
-          console.log('New entry added:', result);
-          res.status(201);
+          // console.log('New entry added:', result);
+          res.status(201).json(result);
         })
         .catch((error) => {
           console.log('Error saving new entry:', error);
@@ -55,7 +55,7 @@ app.get('/:productId', function (req, res) {
   if (req.params.productId === 'Information') {
     return db.returnData('1')
       .then((currentDVD) => {
-        console.log('Retrieved specific DVD', currentDVD);
+        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
@@ -67,12 +67,10 @@ app.get('/:productId', function (req, res) {
 
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
-  console.log('API CALL Specific DVD Request:', req.params.productId);
-
   if (req.params.productId) {
     return db.returnData(req.params.productId)
       .then((currentDVD) => {
-        console.log('Retrieved specific DVD', currentDVD);
+        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
@@ -81,7 +79,7 @@ app.get('/Information/:productId', function (req, res) {
   } else {
     return db.returnData('1')
       .then((currentDVD) => {
-        console.log('Retrieved specific DVD', currentDVD);
+        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
@@ -91,11 +89,11 @@ app.get('/Information/:productId', function (req, res) {
 });
 
 // UPDATE
-app.put('/:productId', (req, res) => {
+app.put('/Information/:productId', (req, res) => {
   db.updateEntry(req.params.productId, req.body)
     .then((result) => {
-      console.log('Record updated:', result);
-      res.status(201);
+      // console.log('Record updated:', result);
+      res.status(201).end();
     })
     .catch((error) => {
       console.log('Error updating record:', error);
@@ -103,12 +101,12 @@ app.put('/:productId', (req, res) => {
 });
 
 // DELETE
-app.delete('/:productId', (req, res) => {
+app.delete('/Information/:productId', (req, res) => {
   let productId = req.params.productId;
   db.deleteEntry(productId)
     .then((result) => {
-      console.log(`Record deleted: ${productId}, result: ${result}`);
-      res.status(200);
+      // console.log(`Record deleted: ${productId}, result: ${result}`);
+      res.status(200).end();
     })
     .catch((error) => {
       console.log('Error deleting record:', error);
