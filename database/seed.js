@@ -13,9 +13,9 @@ let seedData = () => {
     }
     let newRecord = {
       productId: i,
-      aspectRatio: (faker.random.number(5)) + ':' + (faker.random.number(5)),
+      aspectRatio: (faker.datatype.number(5)) + ':' + (faker.datatype.number(5)),
       rating: ratings[(Math.floor(Math.random() * 4))],
-      dimensions: (faker.random.number(10)) + ' x ' + (faker.random.number(5)) + ' x ' + (faker.random.number(2)) + ' Inches',
+      dimensions: (faker.datatype.number(10)) + ' x ' + (faker.datatype.number(5)) + ' x ' + (faker.datatype.number(2)) + ' Inches',
       format: formats[(Math.floor(Math.random() * 8))],
       runTime: Math.floor(Math.random() * 4) + ' hours and ' + Math.floor(Math.random() * 59) + ' minutes',
       releaseDate: faker.date.between('1995-01-01', '2022-01-01'),
@@ -28,7 +28,7 @@ let seedData = () => {
   return information;
 };
 
-// const data = seedData();
+const data = seedData();
 console.log(data);
 
 const save = (data) => {
@@ -44,6 +44,6 @@ const save = (data) => {
   });
 };
 
-// save(data);
+save(data);
 
 
