@@ -27,20 +27,22 @@ const fakeSchema = new mongoose.Schema({
 
 const Information = mongoose.model('Information', fakeSchema);
 
-const returnData = (id) => {
+const get = (id) => {
+  id = id.toString();
   return Information.findOne({productId: id}).exec();
 };
 
-const countEntries = () => {
+const count = () => {
   return Information.countDocuments().exec();
 };
 
-const createEntry = (record) => {
+const post = (record) => {
   let newRecord = new Information(record);
   return newRecord.save();
 };
 
-const updateEntry = (id, update) => {
+const update = (id, update) => {
+  id = id.toString();
   return Information.findOneAndUpdate({
     productId: id
   }, update, {
@@ -51,15 +53,16 @@ const updateEntry = (id, update) => {
   }).exec();
 };
 
-const deleteEntry = (id) => {
+const deleteOne = (id) => {
+  id = id.toString();
   return Information.deleteOne({ productId: id}).exec();
-}
+};
 
 module.exports = {
   Information,
-  returnData,
-  countEntries,
-  createEntry,
-  updateEntry,
-  deleteEntry
+  get,
+  count,
+  post,
+  update,
+  deleteOne
 };

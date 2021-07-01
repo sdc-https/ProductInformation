@@ -8,6 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 
+let db = postgresDb || mongoDb;
 
 app.options('*', cors());
 app.get('*', cors());
@@ -33,30 +34,39 @@ app.get('*/dp/:productId', (req, res) => {
 
 // CREATE
 app.post('/Information', (req, res) => {
-  let productId;
-  mongoDb.countEntries()
-    .then((entries) => {
-      productId = (entries + 1).toString();
-      let record = req.body;
-      record.productId = productId;
-      mongoDb.createEntry(record)
-        .then((result) => {
-          // console.log('New entry added:', result);
-          res.status(201).json(result);
-        })
-        .catch((error) => {
-          console.log('Error saving new entry:', error);
-        });
-    })
+
+  let record = req.body;
+
+  if (db.count) { // MongoDb route
+    db.count()
+      .then((entries) => {
+        let productId = (entries + 1);
+        record.productId = productId;
+        db.post(record)
+          .then((result) => {
+            res.status(201).json(result);
+          })
+          .catch((error) => {
+            console.log('Error saving new entry:', error);
+          });
+      })
+  } else { // Postgres route
+    db.post(record)
+      .then((result) => {
+        res.status(201).json(result);
+      })
+      .catch((error) => {
+        console.log('Error saving new entry:', error);
+      });
+  }
 });
 
 // READ
 //Specific Product Id Fetcher
 app.get('/:productId', function (req, res) {
   if (req.params.productId === 'Information') {
-    return mongoDb.returnData('1')
+    return db.get('1')
       .then((currentDVD) => {
-        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
@@ -69,18 +79,16 @@ app.get('/:productId', function (req, res) {
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
   if (req.params.productId) {
-    return mongoDb.returnData(req.params.productId)
+    return db.get(Number(req.params.productId))
       .then((currentDVD) => {
-        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
         console.log('Error retrieving specific DVD', error);
       });
   } else {
-    return mongoDb.returnData('1')
+    return db.get(1)
       .then((currentDVD) => {
-        // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
       })
       .catch((error) => {
@@ -91,9 +99,8 @@ app.get('/Information/:productId', function (req, res) {
 
 // UPDATE
 app.put('/Information/:productId', (req, res) => {
-  mongoDb.updateEntry(req.params.productId, req.body)
+  db.update(Number(req.params.productId), req.body)
     .then((result) => {
-      // console.log('Record updated:', result);
       res.status(201).end();
     })
     .catch((error) => {
@@ -103,10 +110,8 @@ app.put('/Information/:productId', (req, res) => {
 
 // DELETE
 app.delete('/Information/:productId', (req, res) => {
-  let productId = req.params.productId;
-  mongoDb.deleteEntry(productId)
+  db.deleteOne(Number(req.params.productId))
     .then((result) => {
-      // console.log(`Record deleted: ${productId}, result: ${result}`);
       res.status(200).end();
     })
     .catch((error) => {
