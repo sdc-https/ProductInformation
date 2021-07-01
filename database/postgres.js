@@ -94,7 +94,15 @@ const information = {
   get: async (id) => {
     let info = await Information.findByPk(id);
     if (info.dataValues) {
-      return info.dataValues;
+      return {
+        aspectRatio: info.dataValues.aspect_ratio,
+        rating: info.dataValues.rating,
+        dimensions: info.dataValues.dimensions,
+        format: info.dataValues.format,
+        runTime: info.dataValues.run_time,
+        studio: info.dataValues.studio,
+        numberOfDisks: info.dataValues.number_of_disks
+      };
     } else {
       console.log(`Error retrieving DVDinfo for id ${id}`);
     }
