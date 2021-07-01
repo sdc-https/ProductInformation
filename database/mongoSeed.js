@@ -1,4 +1,4 @@
-const { Information } = require ('./index.js');
+const { Information } = require ('./mongo.js');
 const faker = require('faker');
 
 let seedData = () => {

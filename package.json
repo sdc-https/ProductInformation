@@ -12,7 +12,7 @@
     "start": "webpack serve",
     "watch": "webpack --watch",
     "serve": "nodemon server/index.js",
-    "seedMongo": "node database/seed.js",
+    "seedMongo": "node database/mongoSeed.js",
     "seedPostgres": "node database/postgresSeed.js",
     "seedCouch": "node database/couchDbSeed.js",
     "test": "jest --silent --detectOpenHandles"

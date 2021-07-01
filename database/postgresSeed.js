@@ -22,7 +22,7 @@ const saveInformation = async (noOfRecords) => {
   const formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
 
   let records = [];
-  
+
   for (let i = 0; i < noOfRecords; i++) {
     let DVDInfo = {
       aspect_ratio: (faker.datatype.number(5)) + ':' + (faker.datatype.number(5)),

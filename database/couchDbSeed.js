@@ -7,11 +7,10 @@ const url = `http://${config.username}:${config.password}@localhost:5984/${datab
 
 const generate = async (outer, inner) => {
   let productId = 0;
-  for (let i = 0; i < outer; i++) {
+  for (let i = 1; i <= outer; i++) {
     let records = [];
-    for (let j = 0; j < inner; j++) {
+    for (let j = 1; j <= inner; j++) {
       productId++;
-      console.log(productId);
       const ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
       const formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
       let DVDInfo = {
@@ -27,10 +26,18 @@ const generate = async (outer, inner) => {
       };
       records.push(DVDInfo);
     }
-    await axios.post(url, { records })
+    await axios.post(`${url}/_bulk_docs`, { docs: records })
+      .then(() => console.log(`Inserted ${inner} docs ${i} times`))
       .catch((err) => console.log('Error loading records:', err));
   }
-}
+};
 
-generate(1000, 10000);
+generate(1000, 10000)
+  .then(() => {
+    axios.get(url)
+      .then((results) => console.log(`CouchDB contains ${results.data.doc_count} docs`))
+      .catch((err) => console.log('Error retrieving data:', err));
+  });
+
+
 

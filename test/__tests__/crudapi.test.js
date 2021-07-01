@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { countEntries } from '../../database/index.js';
+import { countEntries } from '../../database/mongo.js';
 import { sampleDataForOneProduct } from '../fixtures/sampleData.js';
 import regeneratorRuntime from 'regenerator-runtime';
 
