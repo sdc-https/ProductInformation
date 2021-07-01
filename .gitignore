@@ -27,4 +27,5 @@ dist/
 #Keys
 *.pem
 *.sh
+couchDb.config.js
 
