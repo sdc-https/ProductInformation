@@ -1,3 +1,4 @@
+
 CREATE TABLE casts (
   id SERIAL PRIMARY KEY,
   actor_one VARCHAR(100),
@@ -16,3 +17,5 @@ CREATE TABLE information (
   studio VARCHAR(100),
   number_of_disks INT
 );
+
+-- /Users/fredericrosselet/Desktop/rpt27/sdc/ProductInformation/database/schema.sql

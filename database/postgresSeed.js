@@ -1,9 +1,6 @@
 const postgresDb = require('./postgres.js');
 const faker = require('faker');
 
-const ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
-const formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
-
 const saveCasts = async (noOfRecords) => {
   let casts = [];
   for (let i = 0; i < noOfRecords; i++) {
@@ -20,7 +17,12 @@ const saveCasts = async (noOfRecords) => {
 };
 
 const saveInformation = async (noOfRecords) => {
+
+  const ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
+  const formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
+
   let records = [];
+
   for (let i = 0; i < noOfRecords; i++) {
     let DVDInfo = {
       aspect_ratio: (faker.datatype.number(5)) + ':' + (faker.datatype.number(5)),

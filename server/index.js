@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const path = require('path');
-// const db = require('../database/index.js');
-const mySqlDb = require('../database/postgres.js');
+const mongoDb = require('../database/mongo.js');
+const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
@@ -34,12 +34,12 @@ app.get('*/dp/:productId', (req, res) => {
 // CREATE
 app.post('/Information', (req, res) => {
   let productId;
-  db.countEntries()
+  mongoDb.countEntries()
     .then((entries) => {
       productId = (entries + 1).toString();
       let record = req.body;
       record.productId = productId;
-      db.createEntry(record)
+      mongoDb.createEntry(record)
         .then((result) => {
           // console.log('New entry added:', result);
           res.status(201).json(result);
@@ -54,7 +54,7 @@ app.post('/Information', (req, res) => {
 //Specific Product Id Fetcher
 app.get('/:productId', function (req, res) {
   if (req.params.productId === 'Information') {
-    return db.returnData('1')
+    return mongoDb.returnData('1')
       .then((currentDVD) => {
         // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
@@ -69,7 +69,7 @@ app.get('/:productId', function (req, res) {
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
   if (req.params.productId) {
-    return db.returnData(req.params.productId)
+    return mongoDb.returnData(req.params.productId)
       .then((currentDVD) => {
         // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
@@ -78,7 +78,7 @@ app.get('/Information/:productId', function (req, res) {
         console.log('Error retrieving specific DVD', error);
       });
   } else {
-    return db.returnData('1')
+    return mongoDb.returnData('1')
       .then((currentDVD) => {
         // console.log('Retrieved specific DVD', currentDVD);
         res.json(currentDVD);
@@ -91,7 +91,7 @@ app.get('/Information/:productId', function (req, res) {
 
 // UPDATE
 app.put('/Information/:productId', (req, res) => {
-  db.updateEntry(req.params.productId, req.body)
+  mongoDb.updateEntry(req.params.productId, req.body)
     .then((result) => {
       // console.log('Record updated:', result);
       res.status(201).end();
@@ -104,7 +104,7 @@ app.put('/Information/:productId', (req, res) => {
 // DELETE
 app.delete('/Information/:productId', (req, res) => {
   let productId = req.params.productId;
-  db.deleteEntry(productId)
+  mongoDb.deleteEntry(productId)
     .then((result) => {
       // console.log(`Record deleted: ${productId}, result: ${result}`);
       res.status(200).end();
