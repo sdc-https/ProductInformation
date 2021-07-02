@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { countEntries } from '../../database/mongo.js';
 import { sampleDataForOneProduct } from '../fixtures/sampleData.js';
 import regeneratorRuntime from 'regenerator-runtime';
 
@@ -10,8 +9,9 @@ describe('POST route', () => {
   it('creates a new record', async () => {
     await axios.post('http://localhost:3001/Information', sampleDataForOneProduct)
       .then((res) => {
-        newProductId = res.data.productId;
         expect(res.status).toBe(201);
+        expect(typeof res.data).toBe('number')
+        newProductId = res.data;
       })
       .catch((error) => {
         console.log(error);
@@ -25,7 +25,7 @@ describe('GET route', () => {
     await axios.get(`http://localhost:3001/Information/${newProductId}`)
       .then((res) => {
         expect(res.status).toBe(200);
-        expect(Object.keys(res.data).length).toBe(12);
+        expect(Object.keys(res.data).length).toBe(9);
       })
       .catch((error) => {
         console.log(error);
@@ -33,12 +33,27 @@ describe('GET route', () => {
   });
 });
 
+
 // Update
 describe('PUT route', () => {
-  it('updates a record', async () => {
+  it('updates a record\'s cast', async () => {
+    await axios.put(`http://localhost:3001/Information/${newProductId}`, {
+      cast: ['Jordan Acevedo', 'Aschale Siyoum', 'Christopher Raffaele','Frederic Rosselet']
+    })
+      .then((res) => {
+        expect(res.status).toBe(201);
+        expect(JSON.parse(res.config.data).cast[3]).toBe('Frederic Rosselet');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  it('updates a record\'s any other property', async () => {
     await axios.put(`http://localhost:3001/Information/${newProductId}`, {format: 'Home Theater'})
       .then((res) => {
         expect(res.status).toBe(201);
+        expect(JSON.parse(res.config.data).format).toBe('Home Theater');
       })
       .catch((error) => {
         console.log(error);
@@ -52,8 +67,9 @@ describe('DELETE route', () => {
     await axios.delete(`http://localhost:3001/Information/${newProductId}`)
       .then((res) => {
         expect(res.status).toBe(200);
+        expect(res.config.data).toBeUndefined();
       })
-      .catch((err) => {
+      .catch((error) => {
         console.log(error);
       });
   });
