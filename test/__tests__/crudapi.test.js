@@ -25,7 +25,7 @@ describe('GET route', () => {
     await axios.get(`http://localhost:3001/Information/${newProductId}`)
       .then((res) => {
         expect(res.status).toBe(200);
-        expect(Object.keys(res.data).length).toBe(9);
+        expect(Object.keys(res.data).length).toBe(8);
       })
       .catch((error) => {
         console.log(error);
