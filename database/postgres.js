@@ -146,6 +146,8 @@ const information = {
 };
 
 module.exports = {
+  informationPostMany: information.postMany,
+  castsPostMany: casts.postMany,
 
   post: async (data) => {
     await casts.postOne(data.cast);

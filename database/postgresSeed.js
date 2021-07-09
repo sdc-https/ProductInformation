@@ -13,7 +13,7 @@ const saveCasts = async (noOfRecords) => {
     casts.push(cast);
   }
 
-  await postgresDb.casts.postMany(casts);
+  await postgresDb.castsPostMany(casts);
 };
 
 const saveInformation = async (noOfRecords) => {
@@ -36,7 +36,7 @@ const saveInformation = async (noOfRecords) => {
     records.push(DVDInfo);
   }
 
-  await postgresDb.information.postMany(records);
+  await postgresDb.informationPostMany(records);
 };
 
 const createRecords = async (noOfTimes) => {

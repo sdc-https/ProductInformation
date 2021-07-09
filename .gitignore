@@ -28,4 +28,5 @@ dist/
 *.pem
 *.sh
 couchDb.config.js
+couchDbCurl.txt
 

@@ -21,6 +21,7 @@ const timePostgres = async () => {
   await postgresFetch(10000000)
     .then(() => console.timeEnd('Postgres query test 3'))
     .catch((err) => console.log(err));
+
 };
 
 const timeCouchDb = async () => {
@@ -45,6 +46,7 @@ const timeCouchDb = async () => {
       console.timeEnd('CouchDB query test 3');
     })
     .catch((err) => console.log(err));
+
 };
 
 const timeMongoDb = async () => {
@@ -63,6 +65,7 @@ const timeMongoDb = async () => {
   await mongoDbFetch(10000000)
     .then(() => console.timeEnd('MongoDB query test 3'))
     .catch((err) => console.log(err));
+
 };
 
 const timeAll = async () => {
