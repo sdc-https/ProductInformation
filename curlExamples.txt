@@ -1,0 +1,11 @@
+// GET:
+curl -u fredrosselet -X GET http://@127.0.0.1:5984/productinformation/10000000
+
+// GET timing:
+curl -w "@/Users/fredericrosselet/Desktop/rpt27/sdc/ProductInformation/couchDbCurl.txt" -o /dev/null -s -u fredrosselet -X GET http://fredrosselet:jasm1ne@127.0.0.1:5984/productinformation/10000000
+
+// PUT:
+curl -u fredrosselet -X PUT http://@127.0.0.1:5984/productinformation/10000000/ -d'{"_id":"10000000","_rev":"2-cf00801eda42fb33eae80375962bd7cf","cast":["Mr. Morris Lind","Ms. Trevor Mayer","Rosemary Larson DDS","Anita Veum"],"aspectRatio":"0:0","rating":"G","dimensions":"3 x 0 x 2 Inches","format":"Full Screen","runTime":"3 hours and 23 minutes","studio":"HR RPT27","numberOfDisks":6}'
+
+// PUT timing:
+curl -w "@/Users/fredericrosselet/Desktop/rpt27/sdc/ProductInformation/couchDbCurl.txt" -o /dev/null -s -u fredrosselet -X PUT http://@127.0.0.1:5984/productinformation/10000000/ -d'{"_id":"10000000","_rev":"10-264d6ac69c73b9ef2dacac98a811e96e","cast":["Mr. Morris Lind","Ms. Trevor Mayer","Rosemary Larson DDS","Anita Veum"],"aspectRatio":"0:0","rating":"G","dimensions":"3 x 0 x 2 Inches","format":"Full Screen","runTime":"3 hours and 23 minutes","studio":"HR RPT27","numberOfDisks":6}'
