@@ -14,7 +14,7 @@ const generate = async (outer, inner) => {
       const ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
       const formats = ['Color', 'NTSC', 'Subtitled', 'Widescreen', 'Multiple Formats', 'Full Screen', 'Dolby', 'Dubbed', 'NTSC'];
       let DVDInfo = {
-        productId: productId,
+        _id: productId.toString(),
         cast: [faker.name.findName(), faker.name.findName(), faker.name.findName(), faker.name.findName()],
         aspectRatio: (faker.datatype.number(5)) + ':' + (faker.datatype.number(5)),
         rating: ratings[(Math.floor(Math.random() * 4))],

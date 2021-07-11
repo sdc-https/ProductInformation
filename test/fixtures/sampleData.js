@@ -10,7 +10,6 @@ export const sampleDataForOneProduct = {
   dimensions: "4 x 0 x 2 Inches",
   format: "Zoom Screen",
   runTime: "8 weeks",
-  releaseDate: '2021-06-26',
   studio: 'RPT Studios',
   numberOfDisks: 88
 }

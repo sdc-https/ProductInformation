@@ -9,10 +9,10 @@ const postgres = new Sequelize(databaseName, 'fredericrosselet', '', {
 
 postgres.authenticate()
   .then(() => {
-    console.log('connected to postgres database:', databaseName);
+    console.log('connected to Postgres:', databaseName);
   })
   .catch((error) => {
-    console.error('unable to connect to postgres database:', error);
+    console.error('unable to connect to Postgres:', error);
   });
 
 
@@ -146,6 +146,8 @@ const information = {
 };
 
 module.exports = {
+  informationPostMany: information.postMany,
+  castsPostMany: casts.postMany,
 
   post: async (data) => {
     await casts.postOne(data.cast);

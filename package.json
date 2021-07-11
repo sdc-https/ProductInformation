@@ -15,6 +15,7 @@
     "seedMongo": "node database/mongoSeed.js",
     "seedPostgres": "node database/postgresSeed.js",
     "seedCouch": "node database/couchDbSeed.js",
+    "dbqueries": "node database/queryTimers.js",
     "test": "jest"
   },
   "devDependencies": {
