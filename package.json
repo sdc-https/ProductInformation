@@ -8,10 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve",
-    "watch": "webpack --watch",
-    "serve": "nodemon server/index.js",
+    "build": "webpack --watch",
+    "start": "nodemon server/index.js",
     "seedMongo": "node database/mongoSeed.js",
     "seedPostgres": "node database/postgresSeed.js",
     "seedCouch": "node database/couchDbSeed.js",
