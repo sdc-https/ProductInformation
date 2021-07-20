@@ -7,9 +7,9 @@ export const sampleDataForOneProduct = {
   ],
   aspectRatio: '2:1',
   rating: 'HR',
-  dimensions: "4 x 0 x 2 Inches",
-  format: "Zoom Screen",
-  runTime: "8 weeks",
+  dimensions: '4 x 0 x 2 Inches',
+  format: 'Zoom Screen',
+  runTime: '8 weeks',
   studio: 'RPT Studios',
   numberOfDisks: 88
-}
+};

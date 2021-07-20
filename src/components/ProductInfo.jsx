@@ -22,12 +22,12 @@ class ProductInfo extends React.Component {
           <li><span className = "bold">Number of discs: </span><span>{this.props.product.numberOfDisks}</span></li><br></br>
           <li><span className = "bold">Customer Reviews: </span><span><br></br><br></br>{this.props.avgReviews} out of 5 stars.&nbsp;&nbsp;</span><span id = "rating">{this.props.totalReviews} ratings</span></li><br></br>
           <li><span className = "bold">Actors: </span><span>{this.props.cast.map((member, index) => {
-          if (index < this.props.cast.length - 2) {
-            return member + ', ';
-          } else if (index < this.props.cast.length - 1) {
-            return member + ' ';
-          }
-        })}</span></li><br></br>
+            if (index < this.props.cast.length - 2) {
+              return member + ', ';
+            } else if (index < this.props.cast.length - 1) {
+              return member + ' ';
+            }
+          })}</span></li><br></br>
         </ul>
         <hr></hr>
       </div>

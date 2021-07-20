@@ -24,7 +24,7 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      'env' : JSON.stringify(dotenv.parsed)
+      'env': JSON.stringify(dotenv.parsed)
     })
   ]
 };

@@ -36,7 +36,7 @@ app.get('*/dp/:productId', (req, res) => {
 app.post('/Information', (req, res) => {
   postgresDb.post(req.body)
     .then((result) => res.status(201).json(result))
-    .catch((error) => console.log('Error saving new entry:', error))
+    .catch((error) => console.log('Error saving new entry:', error));
 });
 
 // READ
@@ -58,21 +58,21 @@ app.post('/Information', (req, res) => {
 app.get('/Information/:productId', function (req, res) {
   return postgresDb.get(Number(req.params.productId))
     .then((currentDVD) => res.json(currentDVD))
-    .catch((error) => console.log('Error retrieving specific DVD', error))
+    .catch((error) => console.log('Error retrieving specific DVD', error));
 });
 
 // UPDATE
 app.put('/Information/:productId', (req, res) => {
   postgresDb.update(Number(req.params.productId), req.body)
     .then((result) => res.status(201).end())
-    .catch((error) => console.log('Error updating record:', error))
+    .catch((error) => console.log('Error updating record:', error));
 });
 
 // DELETE
 app.delete('/Information/:productId', (req, res) => {
   postgresDb.deleteOne(Number(req.params.productId))
     .then((result) => res.status(200).end())
-    .catch((error) => console.log('Error deleting record:', error))
+    .catch((error) => console.log('Error deleting record:', error));
 });
 
 

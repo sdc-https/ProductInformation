@@ -10,7 +10,7 @@ describe('POST route', () => {
     await axios.post('http://localhost:3001/Information', sampleDataForOneProduct)
       .then((res) => {
         expect(res.status).toBe(201);
-        expect(typeof res.data).toBe('number')
+        expect(typeof res.data).toBe('number');
         newProductId = res.data;
       })
       .catch((error) => {
