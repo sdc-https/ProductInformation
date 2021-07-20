@@ -15,8 +15,8 @@ class App extends React.Component {
       avgReviews: 0,
       totalReviews: 0
     };
-    // this.informationip = env.INFORMATION_IP || localhost;
-    // this.reviewsip = env.REVIEW_IP || localhost;
+    // this.informationip = env.INFORMATION_IP || 'localhost';
+    // this.reviewsip = env.REVIEW_IP || 'localhost';
     this.informationip = 'localhost';
     this.reviewsip = 'localhost';
   }

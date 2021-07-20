@@ -117,7 +117,7 @@ const information = {
       run_time: data.runTime,
       studio: data.studio,
       number_of_disks: data.numberOfDisks
-    })
+    });
     if (info.dataValues.id) {
       return info.dataValues.id;
     } else {
@@ -180,4 +180,4 @@ module.exports = {
     await information.deleteOne(id);
   }
 
-}
+};

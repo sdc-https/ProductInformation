@@ -10,7 +10,7 @@ describe('POST route', () => {
     await axios.post('http://localhost:3001/Information', sampleDataForOneProduct)
       .then((res) => {
         expect(res.status).toBe(201);
-        expect(typeof res.data).toBe('number')
+        expect(typeof res.data).toBe('number');
         newProductId = res.data;
       })
       .catch((error) => {
@@ -38,7 +38,7 @@ describe('GET route', () => {
 describe('PUT route', () => {
   it('updates a record\'s cast', async () => {
     await axios.put(`http://localhost:3001/Information/${newProductId}`, {
-      cast: ['Jordan Acevedo', 'Aschale Siyoum', 'Christopher Raffaele','Frederic Rosselet']
+      cast: ['Jordan Acevedo', 'Aschale Siyoum', 'Christopher Raffaele', 'Frederic Rosselet']
     })
       .then((res) => {
         expect(res.status).toBe(201);
