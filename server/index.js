@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const port = 3001;
@@ -7,6 +8,8 @@ const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
+
+
 
 // let db = postgresDb || mongoDb;
 

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './src/app.jsx',
-  mode: 'production',
+  mode: 'development',
   output: {
     filename: 'information.js',
     path: path.join(__dirname, 'public')
