@@ -1,5 +1,4 @@
 const newrelic = require('newrelic');
-
 const Sequelize = require('sequelize');
 const databaseName = 'productinformation';
 

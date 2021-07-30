@@ -10,9 +10,6 @@ const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 
 
-
-// let db = postgresDb || mongoDb;
-
 app.options('*', cors());
 app.get('*', cors());
 app.use(cors());
