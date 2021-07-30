@@ -13,8 +13,8 @@ export let options = {
       duration: '2m',
       preAllocatedVUs: 100,
       maxVUs: 500
-    },
-  },
+    }
+  }
 };
 
 export default () => {
@@ -23,6 +23,6 @@ export default () => {
   let id = Math.floor(Math.random() * (max - min + 1) + min);
   http.get(`${BASE_URL}/${id}`);
   sleep(1);
-  http.post(BASE_URL, JSON.stringify(sampleDataForOneProduct), { headers: {'Content-Type': 'application/json' } });
-  sleep(1);
+  // http.post(BASE_URL, JSON.stringify(sampleDataForOneProduct), { headers: {'Content-Type': 'application/json' } });
+  // sleep(1);
 };
