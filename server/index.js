@@ -1,3 +1,4 @@
+// const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const port = 3001;
@@ -8,7 +9,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 
-// let db = postgresDb || mongoDb;
 
 app.options('*', cors());
 app.get('*', cors());
@@ -35,7 +35,7 @@ app.get('*/dp/:productId', (req, res) => {
 // CREATE
 app.post('/Information', (req, res) => {
   postgresDb.post(req.body)
-    .then((result) => res.status(201).json(result))
+    .then((result) => res.json(result))
     .catch((error) => console.log('Error saving new entry:', error));
 });
 
@@ -56,9 +56,15 @@ app.post('/Information', (req, res) => {
 
 //API Call for specific product ID
 app.get('/Information/:productId', function (req, res) {
-  return postgresDb.get(Number(req.params.productId))
-    .then((currentDVD) => res.json(currentDVD))
-    .catch((error) => console.log('Error retrieving specific DVD', error));
+  let productId = Number(req.params.productId);
+  if (productId) {
+    console.log('Retrieving data for productId:', productId);
+    return postgresDb.get(productId)
+      .then((currentDVD) => res.json(currentDVD))
+      .catch((error) => console.log('Error retrieving specific DVD', error));
+  } else {
+    console.log('Invalid productId');
+  }
 });
 
 // UPDATE

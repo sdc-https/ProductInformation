@@ -3,3 +3,5 @@ bundle.js
 spec/test.js
 database/postgres.js
 database/postgresSeed.js
+newrelic.js
+script.js
