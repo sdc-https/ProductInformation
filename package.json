@@ -46,6 +46,7 @@
     "faker": "^5.5.3",
     "jquery": "^3.6.0",
     "mongoose": "^5.12.7",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "newrelic": "^8.0.0",
     "nodemon": "^2.0.7",
