@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let that = this;
-    axios.get(`http://${this.informationip}:3001/Information/` + this.state.id)
+    axios.get(`http://${this.informationip}:3000/Information/` + this.state.id)
       .then((responseData) =>
         that.setState({
           product: responseData.data,
@@ -35,7 +35,7 @@ class App extends React.Component {
         console.log('ERROR IN AXIOS GET REQUEST', error);
       });
 
-    axios.get(`http://${this.reviewsip}:3004/averagereview/` + this.state.id)
+    axios.get(`http://${this.reviewsip}:3000/averagereview/` + this.state.id)
       .then((response) =>
         that.setState({
           avgReviews: response.data.averageReviews,

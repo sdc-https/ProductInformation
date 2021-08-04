@@ -8,6 +8,7 @@ const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
+const morgan = require('morgan');
 
 
 app.options('*', cors());
@@ -15,6 +16,7 @@ app.get('*', cors());
 app.use(cors());
 app.use(shrinkRay());
 app.use(bodyParser.json());
+app.use(morgan('tiny'));
 
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -58,7 +60,7 @@ app.post('/Information', (req, res) => {
 app.get('/Information/:productId', function (req, res) {
   let productId = Number(req.params.productId);
   if (productId) {
-    console.log('Retrieving data for productId:', productId);
+    // console.log('Retrieving data for productId:', productId);
     return postgresDb.get(productId)
       .then((currentDVD) => res.json(currentDVD))
       .catch((error) => console.log('Error retrieving specific DVD', error));
