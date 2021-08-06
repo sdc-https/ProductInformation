@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const databaseName = 'productinformation';
 
 const postgres = new Sequelize(databaseName, 'fredericrosselet', '', {
-  host: 'localhost',
+  host: process.env.DB_HOST || 'localhost',
   dialect: 'postgres',
   logging: false
 });

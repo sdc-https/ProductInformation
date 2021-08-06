@@ -1,7 +1,6 @@
 // const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
-const port = 3001;
 const path = require('path');
 // const mongoDb = require('../database/mongo.js');
 const postgresDb = require('../database/postgres.js');
@@ -9,6 +8,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 const morgan = require('morgan');
+
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 3001;
 
 
 app.options('*', cors());
@@ -85,5 +87,5 @@ app.delete('/Information/:productId', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Server now listening at http://localhost:${port}`);
+  console.log(`Server now listening at http://${host}:${port}`);
 });
