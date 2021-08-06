@@ -15,16 +15,16 @@ class App extends React.Component {
       avgReviews: 0,
       totalReviews: 0
     };
-    // this.informationip = env.INFORMATION_IP || 'localhost';
-    // this.reviewsip = env.REVIEW_IP || 'localhost';
-    this.informationip = 'localhost';
-    this.reviewsip = 'localhost';
+    this.host = process.env.HOST || 'localhost';
+    this.port = process.env.PROXY_PORT || 3000;
+    // this.informationip = 'localhost';
+    // this.reviewsip = 'localhost';
   }
 
 
   componentDidMount() {
     let that = this;
-    axios.get(`http://${this.informationip}:3000/Information/` + this.state.id)
+    axios.get(`http://${this.host}:${this.port}/Information/` + this.state.id)
       .then((responseData) =>
         that.setState({
           product: responseData.data,
@@ -35,7 +35,7 @@ class App extends React.Component {
         console.log('ERROR IN AXIOS GET REQUEST', error);
       });
 
-    axios.get(`http://${this.reviewsip}:3000/averagereview/` + this.state.id)
+    axios.get(`http://${this.host}:${this.port}/averagereview/` + this.state.id)
       .then((response) =>
         that.setState({
           avgReviews: response.data.averageReviews,
