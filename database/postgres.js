@@ -1,10 +1,7 @@
-// const newrelic = require('newrelic');
+const newrelic = require('newrelic');
 const Sequelize = require('sequelize');
 const databaseName = 'productinformation';
-
-const postgres = new Sequelize(databaseName, 'fredericrosselet', '', {
-  host: process.env.DB_HOST || 'localhost',
-  dialect: 'postgres',
+const postgres = new Sequelize(`postgres://fredrosselet:jasm1ne@50.18.79.233/${databaseName}`, {
   logging: false
 });
 

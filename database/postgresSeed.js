@@ -41,10 +41,11 @@ const saveInformation = async (noOfRecords) => {
 
 const createRecords = async (noOfTimes) => {
   for (let i = 0; i < noOfTimes; i++) {
-    await saveCasts(100000);
-    await saveInformation(100000);
+    await saveCasts(10000);
+    await saveInformation(10000);
+    console.log('saved 10000 records');
   }
 };
 
-createRecords(100);
+createRecords(1000);
 

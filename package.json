@@ -1,6 +1,6 @@
 {
   "name": "product_information",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "",
   "author": "Jordan Acevedo",
   "license": "",
@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack --watch",
+    "build": "webpack --config webpack.config.js --mode development --watch",
+    "prod": "webpack --config webpack.config.js --mode production",
     "start": "nodemon server/index.js",
     "seedMongo": "node database/mongoSeed.js",
     "seedPostgres": "node database/postgresSeed.js",
@@ -50,7 +51,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "newrelic": "^8.0.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.12",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "react": "^17.0.2",

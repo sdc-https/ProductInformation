@@ -9,3 +9,4 @@ information.js
 logindb.sh
 loginservice.sh
 loginproxy.sh
+*.txt
