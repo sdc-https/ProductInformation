@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProductInfo from './components/productInfo.jsx';
+import ProductInfo from './components/ProductInfo.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -17,8 +17,6 @@ class App extends React.Component {
     };
     this.host = process.env.HOST || 'localhost';
     this.port = process.env.PROXY_PORT || 3000;
-    // this.informationip = 'localhost';
-    // this.reviewsip = 'localhost';
   }
 
 

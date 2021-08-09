@@ -6,6 +6,4 @@ couchDb.config.js
 newrelic.js
 newrelic_agent.log
 information.js
-logindb.sh
-loginservice.sh
-loginproxy.sh
+*.sh

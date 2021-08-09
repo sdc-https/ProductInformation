@@ -17,5 +17,3 @@ CREATE TABLE casts (
   actor_three VARCHAR(100),
   director VARCHAR(100)
 );
-
--- /Users/fredericrosselet/Desktop/rpt27/sdc/ProductInformation/database/schema.sql

@@ -1,4 +1,5 @@
-// const newrelic = require('newrelic');
+const newrelic = require('newrelic');
+const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -7,8 +8,7 @@ const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
-const morgan = require('morgan');
-
+// const morgan = require('morgan');
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3001;
 
@@ -18,7 +18,7 @@ app.get('*', cors());
 app.use(cors());
 app.use(shrinkRay());
 app.use(bodyParser.json());
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 
 
 app.use(express.static(path.join(__dirname, '..', 'public')));

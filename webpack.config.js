@@ -4,7 +4,6 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './src/app.jsx',
-  mode: 'development',
   output: {
     filename: 'information.js',
     path: path.join(__dirname, 'public')
@@ -24,8 +23,5 @@ module.exports = {
 
   plugins: [
     new Dotenv()
-    // new webpack.DefinePlugin({
-    //   'env': JSON.stringify(dotenv.parsed)
-    // })
   ]
 };
