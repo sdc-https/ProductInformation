@@ -1,16 +1,16 @@
 const newrelic = require('newrelic');
+const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
-// const mongoDb = require('../database/mongo.js');
 const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 // const morgan = require('morgan');
 
-const host = process.env.HOST || '54.219.28.201';
-const port = 3001;
+const host = process.env.INFORMATION_HOST || 'localhost';
+const port = process.env.INFORMATION_PORT || 3001;
 
 app.options('*', cors());
 app.get('*', cors());

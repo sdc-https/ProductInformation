@@ -1,7 +1,10 @@
 const newrelic = require('newrelic');
+const dotenv = require('dotenv').config();
 const Sequelize = require('sequelize');
+const config = require('./postgres.config.js');
 const databaseName = 'productinformation';
-const postgres = new Sequelize(`postgres://fredrosselet:jasm1ne@50.18.79.233/${databaseName}`, {
+
+const postgres = new Sequelize(`postgres://${config.username}:${config.password}@${process.env.DB_HOST}/${databaseName}`, {
   logging: false
 });
 

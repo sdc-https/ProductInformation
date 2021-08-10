@@ -10,3 +10,4 @@ logindb.sh
 loginservice.sh
 loginproxy.sh
 *.txt
+postgres.config.js

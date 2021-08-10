@@ -15,8 +15,8 @@ class App extends React.Component {
       avgReviews: 0,
       totalReviews: 0
     };
-    this.host = '52.53.150.118';
-    this.port = 3000;
+    this.host = process.env.PROXY_HOST || 'localhost';
+    this.port = process.env.PROXY_PORT || 3000;
   }
 
 
