@@ -9,9 +9,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const shrinkRay = require('shrink-ray-current');
 // const morgan = require('morgan');
-const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || 3001;
-
+const host = process.env.INFORMATION_HOST || 'localhost';
+const port = process.env.INFORMATION_PORT || 3001;
 
 app.options('*', cors());
 app.get('*', cors());

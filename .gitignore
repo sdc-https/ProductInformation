@@ -7,3 +7,4 @@ newrelic.js
 newrelic_agent.log
 information.js
 *.sh
+*.txt
