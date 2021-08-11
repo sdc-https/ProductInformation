@@ -15,14 +15,16 @@ class App extends React.Component {
       avgReviews: 0,
       totalReviews: 0
     };
-    this.host = process.env.PROXY_HOST || 'localhost';
-    this.port = process.env.PROXY_PORT || 3000;
+    this.proxyHost = process.env.PROXY_HOST || 'localhost';
+    this.proxyPort = process.env.PROXY_PORT || 3000;
+    this.reviewsHost = process.env.REVIEWS_HOST || 'localhost';
+    this.reviewsPort = process.env.REVIEWS_PORT || 3004;
   }
 
 
   componentDidMount() {
     let that = this;
-    axios.get(`http://${this.host}:${this.port}/Information/` + this.state.id)
+    axios.get(`http://${this.proxyHost}:${this.proxyPort}/Information/` + this.state.id)
       .then((responseData) =>
         that.setState({
           product: responseData.data,
@@ -33,11 +35,11 @@ class App extends React.Component {
         console.log('ERROR IN AXIOS GET REQUEST', error);
       });
 
-    axios.get(`http://${this.host}:${this.port}/averagereview/` + this.state.id)
+    axios.get(`http://${this.reviewsHost}:${this.reviewsPort}/averagereview/` + this.state.id)
       .then((response) =>
         that.setState({
-          avgReviews: response.data.averageReviews,
-          totalReviews: response.data.totalReviews
+          avgReviews: response.data.averagereviews,
+          totalReviews: response.data.totalreviews
         })
       )
       .catch((error) =>
