@@ -1,4 +1,4 @@
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const dotenv = require('dotenv').config();
 const Sequelize = require('sequelize');
 const config = require('./postgres.config.js');
