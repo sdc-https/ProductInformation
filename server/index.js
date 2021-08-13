@@ -2,6 +2,7 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
+const redis = require('redis');
 const path = require('path');
 const postgresDb = require('../database/postgres.js');
 const cors = require('cors');
@@ -11,6 +12,13 @@ const morgan = require('morgan');
 
 const host = process.env.INFORMATION_HOST || 'localhost';
 const port = process.env.INFORMATION_PORT || 3001;
+
+const redisPort = 6379;
+const client = redis.createClient(redisPort);
+
+client.on('error', (err) => {
+  console.log('Redis client error:', err);
+});
 
 app.options('*', cors());
 app.get('*', cors());
@@ -61,15 +69,28 @@ app.post('/Information', (req, res) => {
 app.get('/Information/:productId', function (req, res) {
   let productId = Number(req.params.productId);
   if (productId) {
-    // console.log('Retrieving data for productId:', productId);
-    return postgresDb.get(productId)
-      .then((currentDVD) => res.json(currentDVD))
-      .catch((error) => console.log('Error retrieving specific DVD', error));
+
+    try {
+      client.get(productId, async (err, currentDVD) => {
+        if (err) throw err;
+        if (currentDVD) {
+          res.status(200).send(currentDVD);
+        } else {
+          return postgresDb.get(productId)
+            .then((currentDVD) => {
+              client.set(productId, JSON.stringify(currentDVD));
+              res.json(currentDVD);
+            })
+            .catch((error) => console.log('Error retrieving specific DVD', error));
+        }
+      });
+    } catch(err) {
+        console.log(err);
+    }
   } else {
     console.log('Invalid productId');
   }
 });
-
 
 // UPDATE
 app.put('/Information/:productId', (req, res) => {
