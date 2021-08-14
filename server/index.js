@@ -74,7 +74,7 @@ app.get('/Information/:productId', function (req, res) {
       client.get(productId, async (err, currentDVD) => {
         if (err) throw err;
         if (currentDVD) {
-          res.status(200).send(currentDVD);
+          res.status(200).send(JSON.parse(currentDVD));
         } else {
           return postgresDb.get(productId)
             .then((currentDVD) => {
