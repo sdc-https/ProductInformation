@@ -19,8 +19,10 @@ Scaling the back end of an item page microservice (System Design Capstone projec
 - Built a custom reverse proxy server (https://github.com/sdc-https/FredProxy) to render and redirect data to and from each service
 - Deployed and improved performance up to 1000 RPS and under 750ms/request using horizontal scaling (Nginx load balancer, five servers on AWS EC2 instances) and Redis caches 
 
-### CRUD API endpoints:
+![SDC diagram](https://user-images.githubusercontent.com/70928984/131567221-39b99ec3-26f9-44dc-8033-ecc8b4ef5ff3.png)
 
+
+### CRUD API endpoints:
 base: http://localhost:3001
 ```sh
 GET /Information/:productId
@@ -28,6 +30,7 @@ POST /Information
 PUT /Information/:productId
 DELETE /Information/:productId
 ```
+
 
 ## Technologies
 ### Front End
