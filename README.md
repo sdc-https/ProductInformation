@@ -1,5 +1,5 @@
 # Amazon DVD Product Information
-Scaling the back end of an item page microservice
+Scaling the back end of an item page microservice (System Design Capstone project by Hack Reactor RPT27 team HTTPS https://github.com/sdc-https)
 
 ## Related Projects
 - [Product Overview](https://github.com/sdc-https/ProductOverview) (Aschale Siyoum)
